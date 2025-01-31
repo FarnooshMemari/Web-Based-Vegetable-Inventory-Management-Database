@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vegetable Database</title>
+</head>
+<body>
+    <h1>Vegetable Database</h1>
+
+    <!-- Adds or Updates Submission -->
+    <h2>Add or Update Vegetable</h2>
+    <form method="POST" action="/">
+        <label for="name">Vegetable Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity" required>
+        <br>
+        <button type="submit" name="add_update">Add/Update Vegetable</button>
+    </form>
+
+    <!-- Deletes Submission -->
+    <h2>Delete Vegetable</h2>
+    <form method="POST" action="/">
+        <label for="name">Vegetable Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <button type="submit" name="delete">Delete Vegetable</button>
+    </form>
+
+    <!-- Searchs Submission -->
+    <h2>Search for a Vegetable</h2>
+    <form method="POST" action="/">
+        <label for="search_name">Vegetable Name:</label>
+        <input type="text" id="search_name" name="search_name" required>
+        <br>
+        <button type="submit" name="search">Search</button>
+    </form>
+
+    <!-- Displays Search Result -->
+    {% if search_message %}
+        <p>{{ search_message }}</p>
+    {% endif %}
+
+    <!-- Lists All Vegetables -->
+    <h2>All Vegetables</h2>
+    <ul>
+        {% for vegetable in vegetables %}
+            <li>{{ vegetable[1] }}: {{ vegetable[0] }}</li>
+        {% else %}
+            <li>No vegetables found in the database.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Clears Database Button -->
+    <h2>Clear Database</h2>
+    <a href="/clear"><button>Clear All Vegetables</button></a>
+
+</body>
+</html>
